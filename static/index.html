@@ -1,0 +1,116 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="A human-supervised AI decision review starter." />
+    <title>AI Decision Desk</title>
+    <link rel="stylesheet" href="/styles.css" />
+  </head>
+  <body>
+    <header class="site-header">
+      <a class="brand" href="/" aria-label="AI Decision Desk home">
+        <span class="brand-mark" aria-hidden="true">SD</span>
+        <span>Secure Decision Desk</span>
+      </a>
+      <div class="status" id="service-status" role="status">
+        <span class="status-dot" aria-hidden="true"></span>
+        Checking server
+      </div>
+    </header>
+
+    <main>
+      <section class="hero" aria-labelledby="page-title">
+        <p class="eyebrow">Human-supervised AI / local-first boundary</p>
+        <h1 id="page-title">Challenge the decision before the decision challenges you.</h1>
+        <p class="lede">
+          Frame one small choice. The server asks AI for assumptions, risks, and a
+          falsifiable next test. You—not the model—own the decision.
+        </p>
+        <div class="boundary-strip" aria-label="Security boundaries">
+          <span>Key stays server-side</span>
+          <span>Likely secrets redacted locally</span>
+          <span>No autonomous actions</span>
+        </div>
+      </section>
+
+      <section class="workspace" aria-label="Decision review workspace">
+        <form id="decision-form" class="panel input-panel">
+          <div class="panel-heading">
+            <div>
+              <p class="step">01 / Frame</p>
+              <h2>Describe the decision</h2>
+            </div>
+            <span class="local-badge">Synthetic data recommended</span>
+          </div>
+
+          <label for="mode">Review lens</label>
+          <select id="mode" name="mode">
+            <option value="challenge">Challenge assumptions</option>
+            <option value="options">Generate bounded options</option>
+            <option value="pre-mortem">Run a pre-mortem</option>
+          </select>
+
+          <label for="objective">Objective</label>
+          <textarea id="objective" name="objective" minlength="10" maxlength="1500" required
+            placeholder="Example: Decide whether the first beta should include team accounts."></textarea>
+          <div class="field-meta">
+            <span>One decision, not an entire project</span><span id="objective-count">0 / 1500</span>
+          </div>
+
+          <label for="context">Context <span class="optional">optional</span></label>
+          <textarea id="context" name="context" maxlength="2500"
+            placeholder="Add synthetic constraints, evidence, and what has already been tried."></textarea>
+          <div class="field-meta">
+            <span>Do not paste private source code or personal data</span><span id="context-count">0 / 2500</span>
+          </div>
+
+          <label class="confirm-row" for="confirmed-safe-input">
+            <input id="confirmed-safe-input" type="checkbox" required />
+            <span>I checked this input and it contains no secrets or personal data.</span>
+          </label>
+
+          <button id="submit-button" type="submit">Create review draft</button>
+          <p class="form-note">
+            Submitting may use OpenAI API credits. Input is sent only after local
+            validation and redaction.
+          </p>
+        </form>
+
+        <article class="panel result-panel" aria-live="polite">
+          <div class="panel-heading">
+            <div>
+              <p class="step">02 / Review</p>
+              <h2>Decision challenge</h2>
+            </div>
+            <span class="review-badge">Human review required</span>
+          </div>
+          <div id="empty-state" class="empty-state">
+            <div class="empty-symbol" aria-hidden="true">?</div>
+            <h3>No draft yet</h3>
+            <p>Your result will appear here as plain text. It cannot trigger an external action.</p>
+          </div>
+          <div id="result-state" class="result-state" hidden>
+            <p id="result-text" class="result-text"></p>
+            <dl class="result-meta">
+              <div><dt>Model</dt><dd id="result-model"></dd></div>
+              <div><dt>Local redactions</dt><dd id="result-redactions"></dd></div>
+              <div><dt>Request</dt><dd id="result-request"></dd></div>
+            </dl>
+            <div class="human-gate">
+              <strong>Human gate</strong>
+              <span>Verify claims, revise the plan, and make the final decision yourself.</span>
+            </div>
+          </div>
+          <p id="error-state" class="error-state" role="alert" hidden></p>
+        </article>
+      </section>
+    </main>
+
+    <footer>
+      <span>Secure starter / evidence before automation</span>
+      <a href="/docs">Development API docs</a>
+    </footer>
+    <script src="/app.js" defer></script>
+  </body>
+</html>

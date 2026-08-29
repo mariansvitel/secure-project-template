@@ -1,0 +1,49 @@
+name: Safe experiment
+description: Frame one bounded, reviewable change before implementation.
+title: "[Experiment]: "
+labels: ["experiment"]
+body:
+  - type: markdown
+    attributes:
+      value: Do not include credentials, personal data, or private infrastructure details.
+  - type: textarea
+    id: outcome
+    attributes:
+      label: Intended outcome
+      description: What should become observably true?
+      placeholder: One small, testable outcome.
+    validations:
+      required: true
+  - type: textarea
+    id: non_goals
+    attributes:
+      label: Non-goals
+      description: What will deliberately remain outside this change?
+    validations:
+      required: true
+  - type: dropdown
+    id: data_class
+    attributes:
+      label: Highest data classification
+      options:
+        - Synthetic or public data only
+        - Internal non-sensitive data
+        - Sensitive data — stop and perform a threat review
+    validations:
+      required: true
+  - type: textarea
+    id: evidence
+    attributes:
+      label: Verification evidence
+      description: Which tests or observations will support the result?
+    validations:
+      required: true
+  - type: checkboxes
+    id: safety
+    attributes:
+      label: Safety gate
+      options:
+        - label: I will not place secrets or personal data in this issue.
+          required: true
+        - label: I will document new permissions, external writes, and AI data flows.
+          required: true
