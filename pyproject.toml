@@ -1,0 +1,51 @@
+[build-system]
+requires = ["setuptools>=80.9.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "secure-project-template"
+version = "0.1.0"
+description = "A security-first, AI-ready FastAPI starter."
+readme = "README.md"
+requires-python = ">=3.11"
+license = "MIT"
+authors = [{ name = "Marian Svitel" }]
+dependencies = [
+  "fastapi==0.141.1",
+  "openai==3.6.0",
+  "pydantic-settings==2.15.0",
+  "python-dotenv==1.2.3",
+  "uvicorn[standard]==0.52.4",
+]
+
+[project.optional-dependencies]
+dev = [
+  "httpx==0.28.1",
+  "pytest==9.1.1",
+  "pytest-cov==7.1.0",
+  "ruff==0.16.5",
+]
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+addopts = "--quiet --cov=secure_starter --cov-report=term-missing --cov-fail-under=90"
+pythonpath = ["src"]
+testpaths = ["tests"]
+
+[tool.coverage.run]
+branch = true
+
+[tool.coverage.report]
+exclude_also = ["if TYPE_CHECKING:", "raise NotImplementedError"]
+
+[tool.ruff]
+line-length = 100
+target-version = "py311"
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "B", "S", "UP", "RUF"]
+
+[tool.ruff.lint.per-file-ignores]
+"tests/**" = ["S101"]
