@@ -1,0 +1,4 @@
+title = "Secure Project Template secret scanning"
+
+[extend]
+useDefault = true
