@@ -7,8 +7,8 @@ server asks OpenAI for a structured challenge, and a human remains responsible f
 the outcome. The model cannot write to external systems, approve changes, or see the
 API key.
 
-> Repository status: private implementation candidate. Do not publish it until the
-> [Publication Gate](docs/PUBLICATION-GATE.md) is complete.
+> Repository status: approved for public release on 2026-09-10. The remaining
+> transition controls are tracked in the [Publication Gate](docs/PUBLICATION-GATE.md).
 
 ## What makes this different
 
