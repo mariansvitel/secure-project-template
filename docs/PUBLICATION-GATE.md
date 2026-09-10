@@ -1,6 +1,6 @@
 # Publication Gate
 
-Keep the repository private until every applicable item is true.
+This gate records the checks completed before and immediately after publication.
 
 ## Value and documentation
 
@@ -26,7 +26,7 @@ Keep the repository private until every applicable item is true.
 ## GitHub transition
 
 - [x] Owner explicitly approved publication on 2026-09-10.
-- [ ] Public metadata, license, issue form, and security policy render correctly.
-- [ ] Secret scanning and push protection are enabled.
-- [ ] Private vulnerability reporting is enabled immediately after publication.
+- [x] Public metadata, license, issue form, and security policy render correctly.
+- [x] Secret scanning and push protection are enabled.
+- [x] Private vulnerability reporting is enabled immediately after publication.
 - [x] Rollback to private is ready if a transition-only check fails.
