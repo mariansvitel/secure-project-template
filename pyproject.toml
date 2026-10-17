@@ -14,7 +14,7 @@ dependencies = [
   "fastapi==0.141.1",
   "openai==3.6.0",
   "pydantic-settings==2.15.0",
-  "python-dotenv==1.2.3",
+  "python-dotenv==1.2.4",
   "uvicorn[standard]==0.52.4",
 ]
 
